@@ -9,5 +9,5 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'pack'
-    packagesToPack: '**/*.csproj'
+    packagesToPack: 'src/CSharpExtensions/*.csproj'
     versioningScheme: 'off'
