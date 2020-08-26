@@ -4,16 +4,16 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Authors>Kumaran Vellaisamy</Authors>
     <Product>CSharpExtensions</Product>
-    <Description>Few useful extension methods for string, guid and observable collection</Description>
+    <Description>Few useful extension methods for string, Guid and ICollection</Description>
     <PackageId>CSharpExtns</PackageId>
     <PackageProjectUrl></PackageProjectUrl>
     <RepositoryUrl>https://github.com/kv0506/csharpextns</RepositoryUrl>
     <RepositoryType>Public</RepositoryType>
-    <PackageTags>c#</PackageTags>
+    <PackageTags>c#, string, Guid, ICollection</PackageTags>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>

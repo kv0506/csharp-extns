@@ -37,12 +37,47 @@ namespace CSharpExtensions
 		}
 
 		/// <summary>
+		/// Determines whether this instance and another specified <see cref="T:System.String"></see> object have the same value.
+		/// </summary>
+		/// <param name="value">The string instance.</param>
+		/// <param name="otherValue">The string to compare to this instance.</param>
+		/// <returns><c>true</c> if the value of the <paramref name="otherValue">value</paramref> parameter is same as the value of this instance; otherwise, <c>false</c>.</returns>
+		public static bool IsEquals(this string value, string otherValue)
+		{
+			if (value == null && otherValue == null)
+				return true;
+
+			if (value == null || otherValue == null)
+				return false;
+
+			return value.Equals(otherValue);
+		}
+
+		/// <summary>
+		/// Determines whether this instance and another specified <see cref="T:System.String"></see> object have the same value.
+		/// </summary>
+		/// <param name="value">The string instance.</param>
+		/// <param name="otherValue">The string to compare to this instance.</param>
+		/// <param name="comparisonType">Type of the comparison.</param>
+		/// <returns><c>true</c> if the value of the <paramref name="otherValue">value</paramref> parameter is same as the value of this instance; otherwise, <c>false</c>.</returns>
+		public static bool IsEquals(this string value, string otherValue, StringComparison comparisonType)
+		{
+			if (value == null && otherValue == null)
+				return true;
+
+			if (value == null || otherValue == null)
+				return false;
+
+			return value.Equals(otherValue, comparisonType);
+		}
+
+		/// <summary>
 		/// Determines whether this instance and another specified <see cref="T:System.String"></see> object do not have the same value.
 		/// </summary>
 		/// <param name="value">The string instance.</param>
 		/// <param name="otherValue">The string to compare to this instance.</param>
 		/// <returns><c>true</c> if the value of the <paramref name="otherValue">value</paramref> parameter is not same as the value of this instance; otherwise, <c>false</c>.</returns>
-		public static bool NotEquals(this string value, string otherValue)
+		public static bool IsNotEquals(this string value, string otherValue)
 		{
 			if (value == null && otherValue == null)
 				return false;
@@ -60,7 +95,7 @@ namespace CSharpExtensions
 		/// <param name="otherValue">The string to compare to this instance.</param>
 		/// <param name="comparisonType">Type of the comparison.</param>
 		/// <returns><c>true</c> if the value of the <paramref name="otherValue">value</paramref> parameter is not same as the value of this instance; otherwise, <c>false</c>.</returns>
-		public static bool NotEquals(this string value, string otherValue, StringComparison comparisonType)
+		public static bool IsNotEquals(this string value, string otherValue, StringComparison comparisonType)
 		{
 			if (value == null && otherValue == null)
 				return false;
@@ -135,7 +170,7 @@ namespace CSharpExtensions
 		/// </returns>
 		public static bool IsNotNullOrEmptyAndNotEquals(this string value, string otherValue)
 		{
-			return value.IsNotNullOrEmpty() && otherValue.IsNotNullOrEmpty() && value.NotEquals(otherValue);
+			return value.IsNotNullOrEmpty() && otherValue.IsNotNullOrEmpty() && !value.Equals(otherValue);
 		}
 
 		/// <summary>
@@ -149,7 +184,7 @@ namespace CSharpExtensions
 		/// </returns>
 		public static bool IsNotNullOrEmptyAndNotEquals(this string value, string otherValue, StringComparison comparisonType)
 		{
-			return value.IsNotNullOrEmpty() && otherValue.IsNotNullOrEmpty() && value.NotEquals(otherValue, comparisonType);
+			return value.IsNotNullOrEmpty() && otherValue.IsNotNullOrEmpty() && !value.Equals(otherValue, comparisonType);
 		}
 
 		/// <summary>
@@ -162,7 +197,7 @@ namespace CSharpExtensions
 		/// </returns>
 		public static bool IsNotNullOrWhiteSpaceAndNotEquals(this string value, string otherValue)
 		{
-			return value.IsNotNullOrWhiteSpace() && otherValue.IsNotNullOrWhiteSpace() && value.NotEquals(otherValue);
+			return value.IsNotNullOrWhiteSpace() && otherValue.IsNotNullOrWhiteSpace() && !value.Equals(otherValue);
 		}
 
 		/// <summary>
@@ -176,7 +211,7 @@ namespace CSharpExtensions
 		/// </returns>
 		public static bool IsNotNullOrWhiteSpaceAndNotEquals(this string value, string otherValue, StringComparison comparisonType)
 		{
-			return value.IsNotNullOrWhiteSpace() && otherValue.IsNotNullOrWhiteSpace() && value.NotEquals(otherValue, comparisonType);
+			return value.IsNotNullOrWhiteSpace() && otherValue.IsNotNullOrWhiteSpace() && !value.Equals(otherValue, comparisonType);
 		}
 	}
 }

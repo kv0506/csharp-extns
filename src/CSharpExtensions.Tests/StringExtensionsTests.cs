@@ -42,6 +42,46 @@ namespace CSharpExtensions.Tests
 			Assert.AreEqual(result, value.IsNotNullOrWhiteSpace());
 		}
 
+		[TestCase(null, "", false)]
+		[TestCase(null, " ", false)]
+		[TestCase(null, "test", false)]
+		[TestCase("", null, false)]
+		[TestCase("", " ", false)]
+		[TestCase("", "test", false)]
+		[TestCase(" ", null, false)]
+		[TestCase(" ", "", false)]
+		[TestCase(" ", "test", false)]
+		[TestCase("test", null, false)]
+		[TestCase("test", "", false)]
+		[TestCase("test", " ", false)]
+		[TestCase("test", "testing", false)]
+		[TestCase("test", "Test", false)]
+		[TestCase(null, null, true)]
+		[TestCase("", "", true)]
+		[TestCase(" ", " ", true)]
+		[TestCase("test", "test", true)]
+		public void IsEquals(string value, string otherValue, bool result)
+		{
+			Assert.AreEqual(result, value.IsEquals(otherValue));
+		}
+
+		[TestCase(null, "", StringComparison.InvariantCultureIgnoreCase, false)]
+		[TestCase(null, " ", StringComparison.InvariantCultureIgnoreCase, false)]
+		[TestCase(null, "test", StringComparison.InvariantCultureIgnoreCase, false)]
+		[TestCase("", null, StringComparison.InvariantCultureIgnoreCase, false)]
+		[TestCase(" ", null, StringComparison.InvariantCultureIgnoreCase, false)]
+		[TestCase("test", null, StringComparison.InvariantCultureIgnoreCase, false)]
+		[TestCase("test", "testing", StringComparison.InvariantCultureIgnoreCase, false)]
+		[TestCase(null, null, StringComparison.InvariantCultureIgnoreCase, true)]
+		[TestCase("", "", StringComparison.InvariantCultureIgnoreCase, true)]
+		[TestCase(" ", " ", StringComparison.InvariantCultureIgnoreCase, true)]
+		[TestCase("test", "test", StringComparison.InvariantCultureIgnoreCase, true)]
+		[TestCase("test", "Test", StringComparison.InvariantCultureIgnoreCase, true)]
+		public void IsEquals_ComparisonType(string value, string otherValue, StringComparison comparisonType, bool result)
+		{
+			Assert.AreEqual(result, value.IsEquals(otherValue, comparisonType));
+		}
+
 		[TestCase(null, null, false)]
 		[TestCase("", "", false)]
 		[TestCase(" ", " ", false)]
@@ -62,7 +102,7 @@ namespace CSharpExtensions.Tests
 		[TestCase("test", "Test", true)]
 		public void NotEquals(string value, string otherValue, bool result)
 		{
-			Assert.AreEqual(result, value.NotEquals(otherValue));
+			Assert.AreEqual(result, value.IsNotEquals(otherValue));
 		}
 
 		[TestCase(null, null, StringComparison.InvariantCultureIgnoreCase, false)]
@@ -79,7 +119,7 @@ namespace CSharpExtensions.Tests
 		[TestCase("test", "testing", StringComparison.InvariantCultureIgnoreCase, true)]
 		public void NotEquals_ComparisonType(string value, string otherValue, StringComparison comparisonType, bool result)
 		{
-			Assert.AreEqual(result, value.NotEquals(otherValue, comparisonType));
+			Assert.AreEqual(result, value.IsNotEquals(otherValue, comparisonType));
 		}
 
 		[TestCase(null, null, false)]
